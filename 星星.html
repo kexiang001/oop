@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				background: url(images/bg.jpg) no-repeat;background-size: 100%;
+			}
+			.star{
+				position: absolute;left:0;top:0;width:20px;height: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		
+	</body>
+</html>
+<script src="js/jquery-1.11.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+		
+	function Star(){
+		
+		this.ele = '<div class="star"><img src="images/snow.gif"></div>';
+			
+		this.fly=function(a,b){
+			$('.star').animate({'left':a,'top':b},1000)
+		}
+	}
+	var timer = 0;
+	tim();
+	if($('.star').length == 20){
+		clearInterval(timer)
+	}
+	function tim(){
+		timer = setInterval(function(){
+			var left1 = Math.random()*1300+50;
+			var top1 = Math.random()*500;
+			var left2 = Math.random()*1300+50;
+			var top2 = Math.random()*500;
+			var sta = new Star()
+			$('body').append(sta.ele);
+			$('.star').css({'left':left1,'top':top1})
+			sta.fly(left2,top2)
+			
+		},1000)
+	}
+
+	//
+</script>
