@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			div{
+				width: 200px;height: 200px;position: absolute;
+				left: 100px;top: 100px;background: url(images/bird.jpg) no-repeat;
+				background-size:200px ;
+			}
+			
+		</style>
+	</head>
+	<body>
+	</body>
+</html>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+	function Tuo(){
+		this.ele = $('<div></div>')
+		this.ele.appendTo('body')
+		this.start();
+	}
+	Tuo.prototype.start = function(){
+		var self = this;
+		this.ele.mousedown(function(e){
+			var e = e || window.e;
+			var l = e.offsetX;
+			var t = e.offsetY;
+			
+			$('body').mousemove( function(event){
+				var event = event || window.event;
+				var x = event.clientX - l;
+				var y = event.clientY - t;
+				self.move(x,y)
+				event.stopPropagation()
+			})
+			$('body').mouseup(function(){
+				//alert()
+				self.stop();
+			})
+		})
+		
+	}
+	Tuo.prototype.move = function(x,y){
+		this.ele.css({
+			left:x,
+			top:y
+		})
+	}
+	Tuo.prototype.stop = function(){
+		$('body').off("mousemove mouseup")
+	}
+	var tuo = new Tuo()
+	
+	
+	
+</script>
