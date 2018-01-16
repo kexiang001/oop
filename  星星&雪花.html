@@ -18,6 +18,15 @@
 			.fireworm {
 				width: 45px;
 				height: 40px;
+				background: url(images/1.jpg);
+				background-size: 100% 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			.snow {
+				width: 45px;
+				height: 40px;
 				background: url(images/snow.gif);
 				background-size: 100% 100%;
 				position: absolute;
@@ -37,14 +46,25 @@
 		
 		this.ele = $("<div></div>")
 		this.ele.addClass("fireworm")  
-		
 		this.ele.appendTo("body") 
-		this.move = function() {
+		
+		
+		
+	}
+	function Snow(){
+		
+		this.ele = $("<div></div>")
+		this.ele.addClass("snow")  
+		this.ele.appendTo("body") 
+		
+		
+		
+	}
+	
+	Snow.prototype.move = function(){
 		var x = Math.random() * ($("body").width() - 100)
 		var y = Math.random() * ($("body").height() - 100)
-		
 		var self = this
-		
 		this.ele.animate({
 			left: x,
 			top: y
@@ -52,12 +72,18 @@
 			self.move()
 		})
 	}
-	
-}
-
-
-
-setInterval(function() {
+	FireWorm.prototype.move = function(){
+		var x = Math.random() * ($("body").width() - 100)
+		var y = Math.random() * ($("body").height() - 100)
+		var self = this
+		this.ele.animate({
+			left: x,
+			top: y
+		}, 1000, function() {
+			self.move()
+		})
+	}
+	new Snow().move()
 	new FireWorm().move()
-}, 1000)
+
 </script>
