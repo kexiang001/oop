@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+
+<script>
+CarfieldCat
+function Cat(color) {
+	this.color = color  
+}
+
+Cat.prototype.eat = function() {
+	console.log("吃各种东西")
+}
+Cat.prototype.miaow = function() {
+	console.log("喵喵~")
+}
+
+function CarfieldCat(color,glasses) {
+	Cat.call(this, color)
+	this.glasses = glasses
+}
+
+CarfieldCat.prototype = new Cat()
+CarfieldCat.prototype.eat = function() {
+	console.log("只吃肉")
+}
+CarfieldCat.prototype.talk = function() {
+	console.log("哈哈")
+}
+function TomCat(color,friend) {
+	Cat.call(this, color)
+	this.friend =friend
+}
+TomCat.prototype = new Cat()
+TomCat.prototype.eat = function() {
+	console.log("只吃面包")
+}
+TomCat.prototype.catchMouse = function() {
+	console.log("捉到一只老鼠")
+}
+//var cat1 = new CarfieldCat(2)    
+//cat1.eat()
+//cat1.miaow()
+//cat1.talk()
+
+var cat = new Cat()
+var garfieldCat = new CarfieldCat()
+var tomCat = new TomCat()
+
+
+cat.eat()
+garfieldCat.eat()
+tomCat.eat()
+
+cat.miaow()
+garfieldCat.miaow()
+tomCat.miaow()
+
+
+garfieldCat.talk()
+tomCat.catchMouse()
+
+
+
+</script>
+
